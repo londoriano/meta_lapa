@@ -92,8 +92,8 @@ function inserirNovaVenda() {
 
     const elementoValor = document.querySelector("#valor");
 
-    if (elementoValor.value === "") {
-        alert("Insira um valor de venda!");
+    if (elementoValor.value === "" || elementoValor.value <= 0) {
+        alert("Insira um valor de venda válido!");
         return;
     } else {
         valor = elementoValor.value;
@@ -191,10 +191,6 @@ function removerVenda(id, valor) {
         return;
     }
 }
-
-
-
-
 
 NovoMês();
 renderTabela();
