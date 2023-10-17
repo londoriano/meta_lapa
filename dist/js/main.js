@@ -1,5 +1,4 @@
 const hoje = new Date();
-console.log(hoje.getDate())
 const elementoData = document.querySelector("#dataDoDia");
 elementoData.innerHTML = hoje.toLocaleDateString("pt-br", {
     weekday: "long",
@@ -68,10 +67,10 @@ function atualizarVendas() {
     vendasDeHoje = vendas.filter(venda => venda.dia == hoje.getDate());
 
     totalVendasMes = vendas.reduce((acumulador, valorAtual) =>
-        acumulador + parseFloat(valorAtual.valor),0);
+        acumulador + parseFloat(valorAtual.valor), 0);
 
     totalVendasHoje = vendasDeHoje.reduce((acumulador, valorAtual) =>
-        acumulador + parseFloat(valorAtual.valor),0);
+        acumulador + parseFloat(valorAtual.valor), 0);
 
 }
 
@@ -88,7 +87,7 @@ function renderInfo() {
 
 function inserirNovaVenda() {
 
-    let dataVenda  = hoje.getDate();;
+    let dataVenda = hoje.getDate();;
     let valor;
 
     const elementoValor = document.querySelector("#valor");
@@ -101,7 +100,16 @@ function inserirNovaVenda() {
         elementoValor.value = "";
     };
 
-    const novaVenda = new Venda(dataVenda, valor, vendas.length + 1);
+    let novaVenda;
+
+    if (vendas.length === 0) {
+        novaVenda = new Venda(dataVenda, valor, vendas.length + 1);
+    } else {
+        const ultVenda = vendas[0];
+        console.log(ultVenda)
+        novaVenda = new Venda(dataVenda, valor, ultVenda.id + 1);
+    }
+
     vendas.push(novaVenda);
     localStorage.setItem("vendas", JSON.stringify(vendas));
     atualizarVendas();
@@ -122,7 +130,6 @@ function renderTabela() {
     tabelaCorpo.innerHTML = "";
 
     const vendasOrdenadas = vendas.sort((a, b) => b.id - a.id);
-    console.log(vendasOrdenadas)
 
     const vendas20 = vendasOrdenadas.slice(0, 20);
 
@@ -131,6 +138,7 @@ function renderTabela() {
         <tr>
         <td class="vendasMes__tabela__td">${elemento.dia}</td>
         <td class="vendasMes__tabela__td">${paraMoeda(parseFloat(elemento.valor))}</td>
+        <td class="vendasMes__tabela__td"><i class="fa-regular fa-trash-can" style="color: #9f1a73;" onClick="removerVenda(${elemento.id})"></i></td>
     </tr>
         `
     });
@@ -159,11 +167,34 @@ function zerarMes() {
     localStorage.clear();
 };
 
-function verificarMetaBatida(){
-    if(totalVendasMes >= meta){
+function verificarMetaBatida() {
+    if (totalVendasMes >= meta) {
         alert("Parabéns, você bateu a meta!");
     }
 };
+
+function removerVenda(id) {
+    const confirmacao = window.confirm("Deseja apagar a venda?");
+    if (confirmacao) {
+        let i = 0;
+        for (venda of vendas) {
+            if (venda.id == id) {
+                vendas.splice(i, 1);
+                localStorage.setItem("vendas", JSON.stringify(vendas));
+                atualizarVendas();
+                renderInfo();
+                renderTabela();
+            }
+            i += 1;
+        }
+    } else {
+        return;
+    }
+}
+
+
+
+
 
 NovoMês();
 renderTabela();
