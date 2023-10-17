@@ -138,7 +138,7 @@ function renderTabela() {
         <tr>
         <td class="vendasMes__tabela__td">${elemento.dia}</td>
         <td class="vendasMes__tabela__td">${paraMoeda(parseFloat(elemento.valor))}</td>
-        <td class="vendasMes__tabela__td"><i class="fa-regular fa-trash-can" style="color: #9f1a73;" onClick="removerVenda(${elemento.id})"></i></td>
+        <td class="vendasMes__tabela__td"><i class="fa-regular fa-trash-can" style="color: #9f1a73;" onClick="removerVenda(${elemento.id}, ${elemento.valor})"></i></td>
     </tr>
         `
     });
@@ -173,8 +173,8 @@ function verificarMetaBatida() {
     }
 };
 
-function removerVenda(id) {
-    const confirmacao = window.confirm("Deseja apagar a venda?");
+function removerVenda(id, valor) {
+    const confirmacao = window.confirm(`Deseja apagar a venda de ${paraMoeda(valor)}?`);
     if (confirmacao) {
         let i = 0;
         for (venda of vendas) {
