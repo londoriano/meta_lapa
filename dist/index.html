@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
+    <title>Meta-Andreia</title>
+</head>
+
+<header>
+    <div class="cabecalho">
+        <img src="./imagens/logo.jpg" alt="logo Lapa Confecções">
+        <p class="cabecalho__titulo">Vendas Diárias Lapa Confecções</p>
+        <span id="dataDoDia"></span>
+    </div>
+</header>
+
+<body>
+    <div class="infoMeta">
+        <form class="infoMeta__form">
+            <div>
+                <label for="#meta">Informe a meta do mês:</label>
+                <input type="number" class="infoMeta__meta" id="meta">
+            </div>
+            <button class="infoMeta__form__botao">Nova Meta</button>
+        </form>
+    </div>
+
+    <div class="infoMes">
+        <p class="infoMes__porcentagem"></p>
+        <p class="vendasMes__zerar">Iniciar Novo Mês</p>
+    </div>
+
+    <div class="novaVenda">
+        <form class="novaVenda__form">
+            <div class="novaVenda__form__valor">
+                <label for="#valor">Valor:</label>
+                <input type="number" class="novaVenda__form__inputValor" id="valor">
+            </div>
+            <button class="novaVenda__form__botao">Nova Venda</button>
+        </form>
+    </div>
+
+    <div class="vendasMes">
+        <p class="vendasMes__totaldoDia">Total de Hoje: R$1500,14</p>
+        <table class="vendasMes__tabela">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-corpo">
+                <!-- Os dados serão renderizados aqui -->
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+<footer class="footer">
+    <p>Desenvolvido Por Jeferson Silveira</p>
+</footer>
+
+</html>
