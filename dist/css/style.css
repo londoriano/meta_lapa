@@ -57,6 +57,7 @@ button {
     color: aliceblue;
     border-color: var(--CorPrincipal);
     border-radius: 50px;
+    margin-top: 35px;
 }
 
 .infoMeta {
@@ -74,6 +75,7 @@ button {
 }
 
 .infoMeta,
+.info__vendas__desktop,
 .infoMes,
 .novaVenda,
 .vendasMes {
@@ -100,6 +102,10 @@ button {
 
 .infoMeta__form button{
     margin-top: 10px;
+}
+
+.novaVenda{
+    border-top: 1px solid var(--CorPrincipal);
 }
 
 .novaVenda__form__data,
@@ -131,4 +137,43 @@ button {
 
 .footer{
     padding: 25px 0;
+}
+
+.info__vendas__desktop{
+    margin-top: -15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+@media screen and (min-width: 700px){
+   
+
+    .novaVenda{
+        border-left: 1px solid var(--CorPrincipal);
+        border-top: none;
+    }
+
+    .infoMes, .novaVenda{
+        max-width: 40%;
+    }
+
+    .infoMes, .novaVenda {
+        margin: 0;
+    }
+
+    .infoMeta, .vendasMes{
+        max-width: 60%;
+    }
+    .info__vendas__desktop{
+        margin-top: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around;
+    }
+
+    .vendasMes__zerar, .novaVenda__form__botao, .iconeTrash{
+        cursor: pointer;
+    }
 }

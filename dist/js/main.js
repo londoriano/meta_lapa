@@ -30,20 +30,17 @@ elementoNovaMeta.addEventListener("click", (event) => {
 
 function NovoMês() {
     const infoMeta = document.querySelector(".infoMeta");
-    const infoMes = document.querySelector(".infoMes");
-    const novaVenda = document.querySelector(".novaVenda");
+    const infoVendas = document.querySelector(".info__vendas__desktop");
     const vendasMes = document.querySelector(".vendasMes");
 
     if (meta === 0) {
         infoMeta.style.display = "block";
-        infoMes.style.display = "none";
-        novaVenda.style.display = "none";
+        infoVendas.style.display = "none";
         vendasMes.style.display = "none";
     } else {
         infoMeta.style.display = "none";
-        infoMes.style.display = "block";
-        infoMes.style.marginTop = "-15px";
-        novaVenda.style.display = "block";
+        infoVendas.style.display = "flex";
+        infoVendas.style.marginTop = "-15px";
         vendasMes.style.display = "block";
     }
 }
@@ -138,7 +135,7 @@ function renderTabela() {
         <tr>
         <td class="vendasMes__tabela__td">${elemento.dia}</td>
         <td class="vendasMes__tabela__td">${paraMoeda(parseFloat(elemento.valor))}</td>
-        <td class="vendasMes__tabela__td"><i class="fa-regular fa-trash-can" style="color: #9f1a73;" onClick="removerVenda(${elemento.id}, ${elemento.valor})"></i></td>
+        <td class="vendasMes__tabela__td"><i class="fa-regular fa-trash-can iconeTrash" style="color: #9f1a73;" onClick="removerVenda(${elemento.id}, ${elemento.valor})"></i></td>
     </tr>
         `
     });
