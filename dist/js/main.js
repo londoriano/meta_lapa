@@ -135,7 +135,7 @@ function renderTabela() {
         <tr>
         <td class="vendasMes__tabela__td">${elemento.dia}</td>
         <td class="vendasMes__tabela__td">${paraMoeda(parseFloat(elemento.valor))}</td>
-        <td class="vendasMes__tabela__td"><i class="fa-regular fa-trash-can iconeTrash" style="color: #9f1a73;" onClick="removerVenda(${elemento.id}, ${elemento.valor})"></i></td>
+        <td class="vendasMes__tabela__td"><i class="fa-regular fa-trash-can iconeTrash" style="color: #000000;" onClick="removerVenda(${elemento.id}, ${elemento.valor})"></i></td>
     </tr>
         `
     });
